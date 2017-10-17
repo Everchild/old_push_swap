@@ -6,38 +6,11 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:34:19 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/17 23:05:07 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/10/18 01:02:16 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
-
-static t_bool		test_batoi(int *bla, const char *nptr)
-{
-	long int		res;
-	long int		pow;
-	int				neg;
-	char			*n;
-	int				i;
-
-	res = 0;
-	neg = 1;
-	i = 0;
-	n = pre_atoi(nptr, &neg);
-	pow = findpow(n);
-	if (!pow)
-		return (pow);
-	while (pow >= 1)
-	{
-		res = res + (((n[i] - '0') * pow) * neg);
-		if (res > INT_MAX || res < INT_MIN)
-			return (B_FALSE);
-		pow /= 10;
-		i++;
-	}
-	*bla = res;
-	return (B_TRUE);
-}*/
 
 t_bool				check_errors(char *args)
 {

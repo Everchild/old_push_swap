@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:13:24 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/17 23:03:15 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/10/18 01:47:45 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int					main(int argc, char **argv)
 	ft_printf("I am a checker!\n");
 	size_t			nb_elem;
 	t_clist			*stack;
+	int				result;
 
 	nb_elem = 0;
 	stack = NULL;
@@ -34,7 +35,7 @@ int					main(int argc, char **argv)
 			ft_printf("Error\n");
 		else
 		{
-			t_node *cur = stack->start;
+		/*	t_node *cur = stack->start;
 			int i = 0;
 			while (cur != stack->end)
 			{
@@ -43,7 +44,14 @@ int					main(int argc, char **argv)
 				cur = cur->next;
 			}
 			ft_printf("elem #%d: %d\n", i, *((int*)(cur->content)));
-			ft_printf("Let's check!\n");
+			ft_printf("Let's check!\n");*/
+			result = check(&stack);
+			if (result == PS_OK)
+				ft_printf("OK\n");
+			else if (result == PS_KO)
+				ft_printf("KO\n");
+			else if (result == PS_ERROR)
+				ft_printf("Error\n");
 		}
 	}
 	return (0);

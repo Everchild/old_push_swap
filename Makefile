@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/09/26 15:45:03 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/10/18 00:47:45 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ LIB_DIR = ./libft
 LIB_INC = $(LIB_DIR)/inc
 
 SRC = checker.c \
-	  parsing_args.c
+	  parsing_args.c \
+	  instructions.c \
+	  check.c
 OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 
 CC = clang

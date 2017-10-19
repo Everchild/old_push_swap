@@ -6,11 +6,12 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/10/18 00:47:45 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/10/19 05:59:28 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = checker
+NAME1 = checker
+NAME2 = push_swap
 
 INC_DIR = ./inc
 SRC_DIR = ./src
@@ -19,21 +20,29 @@ OBJ_DIR = ./obj
 LIB_DIR = ./libft
 LIB_INC = $(LIB_DIR)/inc
 
-SRC = checker.c \
-	  parsing_args.c \
-	  instructions.c \
-	  check.c
-OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
+SRC1 = checker.c \
+	   check.c
+SRC2 = push_swap.c
+SRC_COMMON = instructions.c \
+			 parsing_args.c
+
+OBJ1 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC1))
+OBJ2 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC2))
+OBJ_COMMON = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_COMMON))
 
 CC = clang
-CFLAGS = -g -c -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_INC)
-LFLAGS = -L$(LIB_DIR) -lft
+CFLAGS = -g3 -c -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_INC)
+LFLAGS = -L$(LIB_DIR) -lft -fsanitize=address
 
-$(NAME): $(OBJ)
+all: $(NAME1) $(NAME2)
+
+$(NAME1): $(OBJ1) $(OBJ_COMMON)
 	make -C $(LIB_DIR)
 	$(CC) -o $@ $^ $(LFLAGS)
 
-all: $(NAME)
+$(NAME2): $(OBJ2) $(OBJ_COMMON)
+	make -C $(LIB_DIR)
+	$(CC) -o $@ $^ $(LFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -45,7 +54,8 @@ clean:
 
 fclean: clean
 	make -C $(LIB_DIR) fclean
-	rm -f $(NAME)
+	rm -f $(NAME1)
+	rm -f $(NAME2)
 
 re: fclean all
 

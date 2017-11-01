@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:13:02 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/18 01:50:29 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/10/31 18:06:02 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,24 @@
 typedef struct		s_instructions
 {
 	char			*str;
-	void			(*instruction)(t_clist **, t_clist **);
+	void			(*instruction)(t_clist **, t_clist **, t_bool);
 }					t_instructions;
 
 t_bool				parsing_args(size_t *nb_elem, t_clist **stack, char **args);
+void				swap_a(t_clist **a, t_clist **b, t_bool sort);
+void				swap_b(t_clist **a, t_clist **b, t_bool sort);
+void				swap_ab(t_clist **a, t_clist **b, t_bool sort);
+void				push_a(t_clist **a, t_clist **b, t_bool sort);
+void				push_b(t_clist **a, t_clist **b, t_bool sort);
+void				rotate_a(t_clist **a, t_clist **b, t_bool sort);
+void				rotate_b(t_clist **a, t_clist **b, t_bool sort);
+void				rotate_ab(t_clist **a, t_clist **b, t_bool sort);
+void				reverse_rotate_a(t_clist **a, t_clist **b, t_bool sort);
+void				reverse_rotate_b(t_clist **a, t_clist **b, t_bool sort);
+void				reverse_rotate_ab(t_clist **a, t_clist **b, t_bool sort);
+
 int					check(t_clist **a);
 
-void				swap_a(t_clist **a, t_clist **b);
-void				swap_b(t_clist **a, t_clist **b);
-void				swap_ab(t_clist **a, t_clist **b);
-void				push_a(t_clist **a, t_clist **b);
-void				push_b(t_clist **a, t_clist **b);
-void				rotate_a(t_clist **a, t_clist **b);
-void				rotate_b(t_clist **a, t_clist **b);
-void				rotate_ab(t_clist **a, t_clist **b);
-void				reverse_rotate_a(t_clist **a, t_clist **b);
-void				reverse_rotate_b(t_clist **a, t_clist **b);
-void				reverse_rotate_ab(t_clist **a, t_clist **b);
+void				push_n_swap(t_clist **a, t_clist **b, size_t nb_elem);
 
 #endif

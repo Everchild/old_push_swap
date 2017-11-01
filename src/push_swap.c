@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 01:56:53 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/19 05:57:32 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/10/31 18:10:20 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@ int					main(int argc, char **argv)
 {
 	size_t			nb_elem;
 	t_clist			*stack;
+	t_clist			*b;
 
 	nb_elem = 0;
 	stack = NULL;
+	b = create_clist();
 	if (argc <= 1)
 		ft_printf("usage: ./push_swap <nb1> <nb2> <...>\n");
 	else
 	{
-		if (!parsing_args(&nb_elem, &stack, argv + 1))
+		if (!parsing_args(&nb_elem, &stack, argv + 1) || !b)
 			ft_printf("Error\n");
 		else
 		{
-			ft_printf("push & swap\n");
+//			ft_printf("push & swap\n");
+			push_n_swap(&stack, &b, nb_elem);
 		}
 	}
 	return (0);

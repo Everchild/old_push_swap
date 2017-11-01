@@ -6,30 +6,36 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 00:11:06 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/19 01:13:02 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/10/31 18:03:12 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
 
-void				swap_a(t_clist **a, t_clist **b)
+void				swap_a(t_clist **a, t_clist **b, t_bool sort)
 {
+	if (sort)
+		ft_printf("sa\n");
 	if (a && *a && (*a)->nb_nodes > 1)
 		swap_nodes(&(*a)->start, &(*a)->start->next);
 	b = (t_clist **)b;
 }
 
-void				swap_b(t_clist **a, t_clist **b)
+void				swap_b(t_clist **a, t_clist **b, t_bool sort)
 {
+	if (sort)
+		ft_printf("sb\n");
 	if (b && *b && (*b)->nb_nodes > 1)
 		swap_nodes(&(*b)->start, &(*b)->start->next);
 	a = (t_clist **)a;
 }
 
-void				swap_ab(t_clist **a, t_clist **b)
+void				swap_ab(t_clist **a, t_clist **b, t_bool sort)
 {
-	swap_a(a, b);
-	swap_b(a, b);
+	if (sort)
+		ft_printf("ss\n");
+	swap_a(a, b, B_FALSE);
+	swap_b(a, b, B_FALSE);
 }
 
 /*static void				testcremove_node(t_clist **list, t_node *node)
@@ -61,10 +67,12 @@ void				swap_ab(t_clist **a, t_clist **b)
 //	ft_printf("addr list->end: %p\n", (*list)->end);
 }*/
 
-void				push_a(t_clist **a, t_clist **b)
+void				push_a(t_clist **a, t_clist **b, t_bool sort)
 {
 	t_node			*new;
 
+	if (sort)
+		ft_printf("pa\n");
 	if (b && *b && (*b)->nb_nodes >= 1)
 	{
 		new = create_node(NULL, 0);
@@ -75,10 +83,12 @@ void				push_a(t_clist **a, t_clist **b)
 	}
 }
 
-void				push_b(t_clist **a, t_clist **b)
+void				push_b(t_clist **a, t_clist **b, t_bool sort)
 {
 	t_node			*new;
 
+	if (sort)
+		ft_printf("pb\n");
 	if (a && *a && (*a)->nb_nodes >= 1)
 	{
 //		ft_printf("test1\n");
@@ -94,8 +104,10 @@ void				push_b(t_clist **a, t_clist **b)
 	}
 }
 
-void				rotate_a(t_clist **a, t_clist **b)
+void				rotate_a(t_clist **a, t_clist **b, t_bool sort)
 {
+	if (sort)
+		ft_printf("ra\n");
 	if (a && *a && (*a)->nb_nodes > 1)
 	{
 		(*a)->start = (*a)->start->next;
@@ -105,8 +117,10 @@ void				rotate_a(t_clist **a, t_clist **b)
 	b = (t_clist **)b;
 }
 
-void				rotate_b(t_clist **a, t_clist **b)
+void				rotate_b(t_clist **a, t_clist **b, t_bool sort)
 {
+	if (sort)
+		ft_printf("rb\n");
 	if (b && *b && (*b)->nb_nodes > 1)
 	{
 		(*b)->start = (*b)->start->next;
@@ -115,14 +129,18 @@ void				rotate_b(t_clist **a, t_clist **b)
 	a = (t_clist **)a;
 }
 
-void				rotate_ab(t_clist **a, t_clist **b)
+void				rotate_ab(t_clist **a, t_clist **b, t_bool sort)
 {
-	rotate_a(a, b);
-	rotate_b(a, b);
+	if (sort)
+		ft_printf("rr\n");
+	rotate_a(a, b, B_FALSE);
+	rotate_b(a, b, B_FALSE);
 }
 
-void				reverse_rotate_a(t_clist **a, t_clist **b)
+void				reverse_rotate_a(t_clist **a, t_clist **b, t_bool sort)
 {
+	if (sort)
+		ft_printf("rra\n");
 	if (a && *a && (*a)->nb_nodes > 1)
 	{
 		(*a)->start = (*a)->start->prev;
@@ -131,8 +149,10 @@ void				reverse_rotate_a(t_clist **a, t_clist **b)
 	b = (t_clist **)b;
 }
 
-void				reverse_rotate_b(t_clist **a, t_clist **b)
+void				reverse_rotate_b(t_clist **a, t_clist **b, t_bool sort)
 {
+	if (sort)
+		ft_printf("rrb\n");
 	if (b && *b && (*b)->nb_nodes > 1)
 	{
 		(*b)->start = (*b)->start->prev;
@@ -141,8 +161,10 @@ void				reverse_rotate_b(t_clist **a, t_clist **b)
 	a = (t_clist **)a;
 }
 
-void				reverse_rotate_ab(t_clist **a, t_clist **b)
+void				reverse_rotate_ab(t_clist **a, t_clist **b, t_bool sort)
 {
-	reverse_rotate_a(a, b);
-	reverse_rotate_b(a, b);
+	if (sort)
+		ft_printf("rrr\n");
+	reverse_rotate_a(a, b, B_FALSE);
+	reverse_rotate_b(a, b, B_FALSE);
 }

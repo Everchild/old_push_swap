@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 00:47:47 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/19 01:05:19 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/10/31 18:06:05 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int						check(t_clist **a)
 			ft_strdel(&inst);
 			if (i == NB_INSTR)
 				return (PS_ERROR);
-			all_inst[i].instruction(a, &b);
+			all_inst[i].instruction(a, &b, B_FALSE);
 
 
 	cura = (*a)->start;

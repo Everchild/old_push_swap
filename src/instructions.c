@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 00:11:06 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/31 18:03:12 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/06 10:37:17 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,35 +37,6 @@ void				swap_ab(t_clist **a, t_clist **b, t_bool sort)
 	swap_a(a, b, B_FALSE);
 	swap_b(a, b, B_FALSE);
 }
-
-/*static void				testcremove_node(t_clist **list, t_node *node)
-{
-//	ft_printf("addr list->start: %p\n", (*list)->start);
-//	ft_printf("addr node->prev: %p\n", node->prev);
-//	ft_printf("addr node to remove: %p\n", node);
-//	ft_printf("addr node->next: %p\n", node->next);
-//	ft_printf("addr list->end: %p\n", (*list)->end);
-	if (list && *list && node)
-	{
-		node->prev->next = node->next;
-		node->next->prev = node->prev;
-		if (node == (*list)->start)
-			(*list)->start = node->next;
-		if (node == (*list)->end)
-			(*list)->end = node->prev;
-		ft_memdel((void **)&(node->content));
-		ft_memdel((void **)&node);
-		if ((*list)->nb_nodes == 1)
-		{
-			(*list)->start = NULL;
-			(*list)->end = NULL;
-		}
-		(*list)->nb_nodes -= 1;
-	}
-//	ft_printf("addr list->start: %p\n", (*list)->start);
-//	ft_printf("addr node removed: %p\n", node);
-//	ft_printf("addr list->end: %p\n", (*list)->end);
-}*/
 
 void				push_a(t_clist **a, t_clist **b, t_bool sort)
 {

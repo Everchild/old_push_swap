@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/28 21:10:15 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/07 13:42:17 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/07 17:44:55 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,72 +66,6 @@ static int			find_n_smallest(t_clist **list, size_t n)
 	return (ret);
 }
 
-static t_bool		choose_rotating_way(t_clist **a, int n_smallest)
-{
-	size_t			check_ra;
-	size_t			check_rra;
-	t_node			*cur;
-
-	check_ra = 0;
-	check_rra = 0;
-	cur = (*a)->start;
-	while (*((int *)(cur->content)) > n_smallest)
-	{
-		cur = cur->next;
-		check_ra++;
-	}
-	cur = (*a)->start;
-	while (*((int *)(cur->content)) > n_smallest)
-	{
-		cur = cur->prev;
-		check_rra++;
-	}
-	return (check_ra < check_rra);
-}
-
-static void			push_n_smallest(t_clist **a, t_clist **b, size_t n, int	n_smallest, t_bool isa, t_bool first)
-{
-	size_t			i;
-	t_bool			ra;
-
-	i = 0;
-	if (isa)
-	{
-		while (i < n)
-		{
-			if (first)
-				ra = 1;
-			else
-				ra = choose_rotating_way(a, n_smallest);
-			while (*((int *)((*a)->start->content)) > n_smallest)
-			{
-				if (ra)
-					rotate_a(a, b, B_TRUE);
-				else
-					reverse_rotate_a(a, b, B_TRUE);
-			}
-			push_b(a, b, B_TRUE);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < n)
-		{
-			ra = choose_rotating_way(b, n_smallest);
-			while (*((int *)((*b)->start->content)) > n_smallest)
-			{
-				if (ra)
-					rotate_b(a, b, B_TRUE);
-				else
-					reverse_rotate_b(a, b, B_TRUE);
-			}
-			push_a(a, b, B_TRUE);
-			i++;
-		}
-	}
-}
-
 void				push_n_swap(t_clist **a, t_clist **b, size_t nb_elem)
 {
 	size_t			n;
@@ -151,41 +85,41 @@ void				push_n_swap(t_clist **a, t_clist **b, size_t nb_elem)
 		if (nb_elem > 200)
 		{
 			n = nb_elem / 4;
-			while (n > (10 * nb_elem / 100))
+			while (n > (20 * nb_elem / 100))
 			{
 				while ((*a)->nb_nodes > n)
 				{
 					n_smallest = find_n_smallest(a, n);
-					push_n_smallest(a, b, n, n_smallest, B_TRUE, B_TRUE);
+					push_n_smallest_b(a, b, n, n_smallest, B_TRUE);
 				}
 				rest = (*a)->nb_nodes;
 				n_smallest = find_n_smallest(a, n);
-				push_n_smallest(a, b, rest, n_smallest, B_TRUE, B_TRUE);
+				push_n_smallest_b(a, b, rest, n_smallest, B_TRUE);
 				n /= 4;
 				while ((*b)->nb_nodes > n)
 				{
 					n_smallest = find_n_smallest(b, n);
-					push_n_smallest(a, b, n, n_smallest, B_FALSE, B_FALSE);
+					push_n_smallest_a(a, b, n, n_smallest);
 				}
 				rest = (*b)->nb_nodes;
 				n_smallest = find_n_smallest(b, n);
-				push_n_smallest(a, b, rest, n_smallest, B_FALSE, B_FALSE);
+				push_n_smallest_a(a, b, rest, n_smallest);
 				n /= 4;
 			}
 		}
 		if (!n)
-			n = 18 * nb_elem / 100;
+			n = 20 * nb_elem / 100;
 		while ((*a)->nb_nodes > n)
 		{
 			n_smallest = find_n_smallest(a, n);
 			if (nb_elem > 200)
-				push_n_smallest(a, b, n, n_smallest, B_TRUE, B_FALSE);
+				push_n_smallest_b(a, b, n, n_smallest, B_FALSE);
 			else
-				push_n_smallest(a, b, n, n_smallest, B_TRUE, B_TRUE);
+				push_n_smallest_b(a, b, n, n_smallest, B_TRUE);
 		}
 		rest = (*a)->nb_nodes;
 		n_smallest = find_n_smallest(a, n);
-		push_n_smallest(a, b, rest, n_smallest, B_TRUE, B_FALSE);
+		push_n_smallest_b(a, b, rest, n_smallest, B_FALSE);
 		insert_in_a(a, b, rest, n);
 	}
 }

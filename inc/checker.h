@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:13:02 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/03 02:28:39 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/07 16:06:36 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void				reverse_rotate_ab(t_clist **a, t_clist **b, t_bool sort);
 int					check(t_clist **a);
 
 void				push_n_swap(t_clist **a, t_clist **b, size_t nb_elem);
+void				push_n_smallest_b(t_clist **a, t_clist **b, size_t n, int s_smallest, t_bool first);
+void				push_n_smallest_a(t_clist **a, t_clist **b, size_t n, int s_smallest);
 void				insert_in_a(t_clist **a, t_clist **b, size_t rest, size_t n);
 
 #endif

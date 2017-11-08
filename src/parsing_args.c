@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:34:19 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/19 01:02:53 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 13:17:51 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_bool				check_errors(char *args)
 {
-//	ft_printf("I am checking for errors in [%s]!\n", args);
 	int				i;
 
 	i = 0;
@@ -22,16 +21,10 @@ t_bool				check_errors(char *args)
 	{
 		if (!ft_isdigit(args[i])
 				&& (args[i] != '-' && args[i] != ' ' && args[i] != '+'))
-//		{
-//			ft_printf("error 1\n");
 			return (B_FALSE);
-//		}
 		if ((args[i] == '-' || args[i] == '+')
 				&& ((i > 0 && args[i - 1] != ' ') || !ft_isdigit(args[i + 1])))
-//		{
-//			ft_printf("error 2\n");
 			return (B_FALSE);
-//		}
 		i++;
 	}
 	return (B_TRUE);
@@ -39,7 +32,6 @@ t_bool				check_errors(char *args)
 
 static t_bool		create_stack(size_t *nb_elem, t_clist **stack, char **args)
 {
-//	ft_printf("I am creating the first stack!\n");
 	t_node			*node;
 	t_node			*cur;
 
@@ -49,24 +41,14 @@ static t_bool		create_stack(size_t *nb_elem, t_clist **stack, char **args)
 	{
 		node = create_node(NULL, 0);
 		node->content = (int *)ft_memalloc(sizeof(int));
-
-//		ft_printf("arg #%d: [%s]\n", *nb_elem, args[*nb_elem]);
 		if (!ft_batoi((int *)(node->content), args[*nb_elem]))
-//		{
-//			ft_printf("bla\n");
 			return (B_FALSE);
-//		}
-//		ft_printf("arg #%d: [%s]\n", *nb_elem, args[*nb_elem]);
 		cadd_node_end(stack, node);
 		cur = (*stack)->start;
 		while (cur != (*stack)->end)
 		{
-//			ft_printf("new node: %d | cur node: %d\n", *((int *)(node->content)), *((int *)(cur->content)));
 			if (*((int *)(node->content)) == *((int *)(cur->content)))
-//			{
-//				ft_printf("truc\n");
 				return (B_FALSE);
-//			}
 			cur = cur->next;
 		}
 		(*nb_elem)++;
@@ -76,7 +58,6 @@ static t_bool		create_stack(size_t *nb_elem, t_clist **stack, char **args)
 
 t_bool				parsing_args(size_t *nb_elem, t_clist **stack, char **args)
 {
-//	ft_printf("I am parsing args!\n");
 	char			*str;
 	char			*tmp;
 

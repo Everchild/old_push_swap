@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 00:47:47 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/31 18:06:05 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 13:19:21 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static t_instructions	*get_instructions(void)
 
 static int				check_sort(t_clist **a, t_clist **b)
 {
-//	ft_printf("%p; %p; I'm checking if the list if sorted!\n", a, b);
 	t_node				*cur;
 
 	if ((*b)->start)
@@ -61,27 +60,6 @@ int						check(t_clist **a)
 	b = create_clist();
 	if (*a && b)
 	{
-
-	t_node *cura = (*a)->start;
-	t_node *curb = b->start;
-
-	ft_putendl("A list:\n");
-	while (cura && cura != (*a)->end)
-	{
-		ft_printf("%d\n", *(int *)(cura->content));
-		cura = cura->next;
-	}
-	if (cura && cura == (*a)->end)
-		ft_printf("%d\n\n", *(int *)(cura->content));
-	ft_putendl("B list:\n");
-	while (curb && curb != b->end)
-	{
-		ft_printf("%d\n", *(int *)(curb->content));
-		curb = curb->next;
-	}
-	if (curb && curb == b->end)
-		ft_printf("%d\n\n", *(int *)(curb->content));
-/// start checker
 		while (get_next_line(1, &inst))
 		{
 			i = 0;
@@ -95,30 +73,6 @@ int						check(t_clist **a)
 			if (i == NB_INSTR)
 				return (PS_ERROR);
 			all_inst[i].instruction(a, &b, B_FALSE);
-
-
-	cura = (*a)->start;
-	curb = b->start;
-//	ft_printf("start: %p\n", (*a)->start);
-//	ft_printf("end: %p\n", (*a)->end);
-	ft_putendl("A list:\n");
-	while (cura && cura != (*a)->end)
-	{
-		ft_printf("%d\n", *(int *)(cura->content));
-		cura = cura->next;
-	}
-	if (cura && cura == (*a)->end)
-		ft_printf("%d\n\n", *(int *)(cura->content));
-	ft_putendl("B list:\n");
-	while (curb && curb != b->end)
-	{
-		ft_printf("%d\n", *(int *)(curb->content));
-		curb = curb->next;
-	}
-	if (curb && curb == b->end)
-		ft_printf("%d\n\n", *(int *)(curb->content));
-
-
 		}
 		return (check_sort(a, &b));
 	}

@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 02:23:56 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/06 14:41:00 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 12:28:58 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void			sort_n_biggest(t_dblist **n_biggest, t_clist **b, size_t n)
 	}
 }
 
-static void			push_node(t_clist **a, t_clist **b, t_bool rb, t_node *to_find)
+static void			push_node(t_clist **a, t_clist **b, t_bool rb,
+					t_node *to_find)
 {
 	while ((*b)->start != to_find)
 	{
@@ -52,10 +53,11 @@ static void			push_node(t_clist **a, t_clist **b, t_bool rb, t_node *to_find)
 	push_a(a, b, B_TRUE);
 }
 
-static void			find_n_biggest(t_clist **a, t_clist **b, t_dblist **n_biggest)
+static void			find_n_biggest(t_clist **a, t_clist **b,
+					t_dblist **n_biggest)
 {
-	t_node			*to_find; // noeud a pusher de b a a
-	t_node			*to_push; // noeud a comparer dans n_biggest
+	t_node			*to_find;
+	t_node			*to_push;
 	t_node			*save;
 	t_bool			rb;
 
@@ -95,8 +97,4 @@ void				insert_in_a(t_clist **a, t_clist **b, size_t rest, size_t n)
 			find_n_biggest(a, b, &n_biggest);
 		}
 	}
-	b = (t_clist**)b;	
-	a = (t_clist**)a;	
-	n = (size_t)n;	
-	rest = (size_t)rest;	
 }

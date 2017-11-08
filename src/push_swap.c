@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 01:56:53 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/10/31 18:10:20 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 13:25:53 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int					main(int argc, char **argv)
 		if (!parsing_args(&nb_elem, &stack, argv + 1) || !b)
 			ft_printf("Error\n");
 		else
-		{
-//			ft_printf("push & swap\n");
 			push_n_swap(&stack, &b, nb_elem);
-		}
 	}
 	return (0);
 }

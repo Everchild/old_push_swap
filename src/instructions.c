@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 00:11:06 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/06 10:37:17 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 13:25:20 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,11 @@ void				push_b(t_clist **a, t_clist **b, t_bool sort)
 		ft_printf("pb\n");
 	if (a && *a && (*a)->nb_nodes >= 1)
 	{
-//		ft_printf("test1\n");
 		new = create_node(NULL, 0);
-//		ft_printf("node to add: %p\n", new);
 		new->content = (int *)ft_memalloc(sizeof(int));
 		*(int *)(new->content) = *(int *)((*a)->start->content);
-//		ft_printf("list->start before adding: %p\n", (*a)->start);
 		cadd_node_start(b, new);
-//		ft_printf("list->start after adding: %p\n", (*a)->start);
 		cremove_node(a, (*a)->start);
-//		ft_printf("test6\n");
 	}
 }
 
@@ -82,7 +77,6 @@ void				rotate_a(t_clist **a, t_clist **b, t_bool sort)
 	if (a && *a && (*a)->nb_nodes > 1)
 	{
 		(*a)->start = (*a)->start->next;
-		//		ft_printf("a->end->next: %d\n", *(int *)((*a)->end->next->content));
 		(*a)->end = (*a)->end->next;
 	}
 	b = (t_clist **)b;

@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/11/07 15:43:51 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/11/08 10:50:29 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC1 = checker.c \
 	   check.c
 SRC2 = push_swap.c \
 	   push_n_swap.c \
-	   push_n_smallest.c \
+	   push_on_a.c \
+	   push_on_b.c \
 	   insert_in_a.c
 SRC_COMMON = instructions.c \
 			 parsing_args.c

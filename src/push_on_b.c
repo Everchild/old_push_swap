@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:30:04 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/08 12:44:11 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 18:25:53 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_bool		choose_rotating_way(t_clist **list, int n_smallest)
 	return (check_r < check_rr);
 }
 
-void				push_n_smallest_b(t_clist **a, t_clist **b, size_t n, int n_smallest, t_bool first)
+void				push_n_smallest_b(t_stacks *stacks, size_t n, int n_smallest, t_bool first)
 {
 	size_t			i;
 	t_bool			ra;
@@ -46,15 +46,15 @@ void				push_n_smallest_b(t_clist **a, t_clist **b, size_t n, int n_smallest, t_
 		if (first)
 			ra = 1;
 		else
-			ra = choose_rotating_way(a, n_smallest);
-		while (*((int *)((*a)->start->content)) > n_smallest)
+			ra = choose_rotating_way(&(stacks->a), n_smallest);
+		while (*((int *)(stacks->a->start->content)) > n_smallest)
 		{
 			if (ra)
-				rotate_a(a, b, B_TRUE);
+				rotate_a(&(stacks->a), &(stacks->b), B_TRUE);
 			else
-				reverse_rotate_a(a, b, B_TRUE);
+				reverse_rotate_a(&(stacks->a), &(stacks->b), B_TRUE);
 		}
-		push_b(a, b, B_TRUE);
+		push_b(&(stacks->a), &(stacks->b), B_TRUE);
 		i++;
 	}
 }

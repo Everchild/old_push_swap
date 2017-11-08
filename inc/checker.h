@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:13:02 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/08 13:14:15 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/08 13:45:41 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				reverse_rotate_ab(t_clist **a, t_clist **b, t_bool sort);
 int					check(t_clist **a);
 
 void				push_n_swap(t_clist **a, t_clist **b, size_t nb_elem);
+int					find_n_edge(t_clist **list, size_t n, t_bool small);
 void				push_n_smallest_b(t_clist **a, t_clist **b, size_t n,
 					int s_smallest, t_bool first);
 void				push_n_biggest_a(t_clist **a, t_clist **b, size_t n,

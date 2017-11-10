@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 01:56:53 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/08 18:06:05 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/10 19:27:24 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int					main(int argc, char **argv)
 		else
 			push_n_swap(&stacks, nb_elem);
 	}
+	while (1)
+	{}
 	return (0);
 }

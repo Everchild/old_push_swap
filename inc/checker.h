@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/26 13:13:02 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/08 18:21:33 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/10 17:42:22 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int					check(t_clist **a);
 
 void				push_n_swap(t_stacks *stacks, size_t nb_elem);
 int					find_n_edge(t_clist **list, size_t n, t_bool small);
+void				handle_small_lists(t_stacks *stacks, size_t nb_elem);
 void				push_n_smallest_b(t_stacks *stacks, size_t n,
 					int s_smallest, t_bool first);
 void				push_n_biggest_a(t_clist **a, t_clist **b, size_t n,

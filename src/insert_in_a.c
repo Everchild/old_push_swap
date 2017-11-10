@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 02:23:56 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/08 12:28:58 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/10 18:57:02 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void				insert_in_a(t_clist **a, t_clist **b, size_t rest, size_t n)
 			find_n_biggest(a, b, &n_biggest);
 		}
 	}
+	free_dblist(&n_biggest);
 }

@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 13:42:35 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/11/08 14:08:06 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/11/10 18:42:42 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,6 @@ int					find_n_edge(t_clist **list, size_t n, t_bool small)
 		else
 			insert_biggest_node(&n_smallest, *((int *)(cur->content)), n);
 	}
-
-/*		cur = n_smallest->start;
-		while (cur)
-		{
-		ft_printf("%d\n", *((int *)(cur->content)));
-		cur = cur->next;
-		}*/
-
 	ret = *((int *)(n_smallest->end->content));
 	free_dblist(&n_smallest);
 	return (ret);
